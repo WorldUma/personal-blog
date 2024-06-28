@@ -24,11 +24,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/', [ArticleController::class, 'index'])->name('home');
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/category/{name}', [ArticleController::class, 'category'])->name('category.show');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','is_admin'])->group(function () {
     Route::resource('articles', ArticleController::class);
     Route::resource('categories', CategoryController::class);
     //Route::resource('tags', TagController::class);s

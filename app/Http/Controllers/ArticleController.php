@@ -65,6 +65,14 @@ class ArticleController extends Controller
          $article = Article::with('category')->findOrFail($id);
         return view('articles.show', compact('article'));
     }
+    public function category($name)
+    {
+    $category = Category::where('name', $name)->firstOrFail();
+    $articles = Article::where('category_id', $category->id)->get();
+    //dd($articles);
+    return view('articles.category', compact('category', 'articles'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.

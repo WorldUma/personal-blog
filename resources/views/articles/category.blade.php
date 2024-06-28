@@ -1,8 +1,8 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Articles</h1>
+        <h1 class="mb-4">{{ $category->name }} Articles</h1>
         <div class="row">
             @foreach ($articles as $article)
                 <div class="col-md-6 mb-4 d-flex align-items-stretch">
@@ -22,4 +22,4 @@
             @endforeach
         </div>
     </div>
-@endsection --}}
+@endsection
